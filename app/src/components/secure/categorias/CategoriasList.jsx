@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import StudentsService from "../../../services/students.service";
 import { Link } from 'react-router-dom';
 
-const StudentsList = () => {
-    const [students, setStudents] = useState([]);
+const CategoriasList = () => {
+    const [categorias, setCategorias] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
             const data = await StudentsService.getAll();
-            setStudents(data.data);
+            setCategorias(data.data);
         }
 
         fetchData();
@@ -33,10 +33,7 @@ const StudentsList = () => {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Número</th>
-                            <th scope="col">Cidade</th>
-                            <th scope="col">Aniversário</th>
+                            <th scope="col">Descrição</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -45,13 +42,10 @@ const StudentsList = () => {
                         {students.map((student, index) => (
                             <tr key={student.id}>
                                 <td >{index + 1}</td>
-                                <td>{student.name}</td>
-                                <td>{student.number}</td>
-                                <td>{student.city}</td>
-                                <td>{student.birthday}</td>
+                                <td>{student.descricao}</td>
                                 <td>
                                     <div className="d-flex justify-content">
-                                        <Link to={`/student/${student.number}`} className='btn btn-primary me-2'>Editar</Link>
+                                        <Link to={`/categoria/${categoria.number}`} className='btn btn-primary me-2'>Editar</Link>
                                     </div>
                                 </td>
                             </tr>
@@ -63,4 +57,4 @@ const StudentsList = () => {
     );
 }
 
-export default StudentsList;
+export default CategoriasList;

@@ -5,19 +5,16 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { Link } from "react-router-dom";
 
-import StudentsService from "../../../services/agendas.service";
+import StudentsService from "../../../services/categorias.service";
 
-const Student = () => {
+const Categoria = () => {
     const navigate = useNavigate();
 
 
     const params = useParams();
     const [id, setId] = useState(null);
     const [number, setNumber] = useState("");
-    const [dia, setDia] = useState("");
-    const [mes, setMes] = useState("");
-    const [ano, setAno] = useState("");
-    const [diasemana, setDiaSemana] = useState("");
+    const [descricao, setDescricao] = useState("");
     const [successful, setSuccessful] = useState(null);
     const [message, setMessage] = useState("");
 
@@ -31,10 +28,7 @@ const Student = () => {
 
             setId(response.data.id);
             setNumber(response.data.number);
-            setDia(response.data.dia);
-            setMes(response.data.mes);
-            setAno(response.data.ano);
-            setDiaSemana(response.data.diasemana);
+            setDescricao(response.data.descricao);
         }
 
         fetchData();
@@ -60,10 +54,7 @@ const Student = () => {
 
                     setId(response.data.id);
                     setNumber(response.data.number);
-                    setDia(response.data.dia);
-                    setMes(response.data.mes);
-                    setAno(response.data.ano);
-                    setDiaSemana(response.data.diasemana);
+                    setDescricao(response.data.descricao);
                 },
                 (error) => {
                     const resMessage =
@@ -131,52 +122,18 @@ const Student = () => {
                                 <h1 className="h3 mb-3 fw-normal">Registar</h1>
 
                                 <div className="form-group">
-                                    <label>Dia</label>
+                                    <label>Descrção</label>
                                     <Input
                                         type="text"
                                         className="form-control"
-                                        name="number"
-                                        value={number}
+                                        name="descricao"
+                                        value={descricao}
                                         onChange= {(e) => setNumber(e.target.value)}
                                         validations={[required]}
                                     />
                                 </div>
 
-                                <div className="form-group">
-                                    <label>Mês</label>
-                                    <Input
-                                        type="text"
-                                        className="form-control"
-                                        name="nome"
-                                        value={nome}
-                                        onChange={(e) => setName(e.target.value)}
-                                        validations={[required, validLength]}
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Ano</label>
-                                    <Input
-                                        type="text"
-                                        className="form-control"
-                                        name="Ano"
-                                        value={ano}
-                                        onChange={(e) => setCity(e.target.value)}
-                                        validations={[required, validLength]}
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Dia da Semana</label>
-                                    <Input
-                                        type="text"
-                                        className="form-control"
-                                        name="dia da semana"
-                                        value={diasemana}
-                                        onChange={(e) => setBirthday(e.target.value)}
-                                        validations={[required]}
-                                    />
-                                </div>
+                                
 
                                 <div className="form-group">
                                     <button className="btn btn-success mt-2">Registar</button>
@@ -185,7 +142,7 @@ const Student = () => {
                                         Eliminar
                                     </button>)}
 
-                                    <Link to={"/students-list"} className="btn btn-secondary mt-2 mx-2">
+                                    <Link to={"/categorias-list"} className="btn btn-secondary mt-2 mx-2">
                                         Voltar
                                     </Link>
                                 </div>
@@ -219,4 +176,4 @@ const Student = () => {
     );
 }
 
-export default Student;
+export default Categoria;

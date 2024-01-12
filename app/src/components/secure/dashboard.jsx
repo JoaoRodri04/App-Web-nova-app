@@ -26,6 +26,9 @@ const Dashboard = () => {
                         <Link to={'/agendas-list'} className="btn btn-info btn-lg px-4 mx-2">
                             Agendas
                         </Link>
+                        <Link to={'/categorias-list'} className="btn btn-info btn-lg px-4 mx-2">
+                            categorias
+                        </Link>
                     </div>
                 </div>
             </div>

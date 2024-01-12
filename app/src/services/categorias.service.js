@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://aw-p-exemplo-1778.vercel.app/api/v2/students/";
+const API_URL = "http://localhost:4242/api/categorias";
 
 axios.interceptors.request.use(
 config => {

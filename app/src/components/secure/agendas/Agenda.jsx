@@ -182,7 +182,7 @@ const Agenda = () => {
                                         Eliminar
                                     </button>)}
 
-                                    <Link to={"/students-list"} className="btn btn-secondary mt-2 mx-2">
+                                    <Link to={"/agendas-list"} className="btn btn-secondary mt-2 mx-2">
                                         Voltar
                                     </Link>
                                 </div>

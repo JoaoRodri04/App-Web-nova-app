@@ -20,6 +20,8 @@ import Footer from "./components/shared/Footer";
 import Header from "./components/shared/Header";
 import AgendasList from "./components/secure/agendas/agendasList";
 import Agenda from "./components/secure/agendas/Agenda";
+import AgendasList from "./components/secure/agendas/agendasList";
+import Agenda from "./components/secure/agendas/Agenda";
 
 const App = () => {
 return (
@@ -35,6 +37,9 @@ return (
             <Route path="/agendas-list" element={<AgendasList />} />
             <Route path="/agenda" element={<Agenda />} />
             <Route path="/agenda/:id" element={<Agenda />} />
+            <Route path="/categorias-list" element={<CategoriasList />} />
+            <Route path="/categoria" element={<Categoria />} />
+            <Route path="/categoria/:id" element={<Categoria />} />
             <Route path='*'element={<Navigate to="/dashboard" />} />
         </Route>
 

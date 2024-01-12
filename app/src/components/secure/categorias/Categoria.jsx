@@ -5,7 +5,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { Link } from "react-router-dom";
 
-import StudentsService from "../../../services/categorias.service";
+import CategoriasService from "../../../services/categorias.service";
 
 const Categoria = () => {
     const navigate = useNavigate();
@@ -13,21 +13,19 @@ const Categoria = () => {
 
     const params = useParams();
     const [id, setId] = useState(null);
-    const [number, setNumber] = useState("");
     const [descricao, setDescricao] = useState("");
     const [successful, setSuccessful] = useState(null);
     const [message, setMessage] = useState("");
 
     useEffect(() => {
-        if (!params.number) {
+        if (!params.id) {
             return;
         }
 
         async function fetchData() {
-            const response = await StudentsService.getById(params.number);
+            const response = await CategoriasService.getById(params.id);
 
             setId(response.data.id);
-            setNumber(response.data.number);
             setDescricao(response.data.descricao);
         }
 
@@ -47,13 +45,12 @@ const Categoria = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            StudentsService.createORupdate(id, number, dia, mes, ano, diasemana).then(
+            CategoriasService.createORupdate(id, descricao).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
 
                     setId(response.data.id);
-                    setNumber(response.data.number);
                     setDescricao(response.data.descricao);
                 },
                 (error) => {
@@ -74,9 +71,9 @@ const Categoria = () => {
     const handleDelete = (e) => {
         e.preventDefault();
 
-        AgendasService.deleteUser(number).then(
+        CategoriasService.deleteUser(id).then(
             (response) => {
-                navigate('/agendas-list');
+                navigate('/categorias-list');
             },
             (error) => {
                 const resMessage =
@@ -128,7 +125,7 @@ const Categoria = () => {
                                         className="form-control"
                                         name="descricao"
                                         value={descricao}
-                                        onChange= {(e) => setNumber(e.target.value)}
+                                        onChange= {(e) => setId(e.target.value)}
                                         validations={[required]}
                                     />
                                 </div>

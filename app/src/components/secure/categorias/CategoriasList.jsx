@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import StudentsService from "../../../services/students.service";
+import CategoriasService from "../../../services/categorias.service";
 import { Link } from 'react-router-dom';
 
 const CategoriasList = () => {
@@ -7,7 +7,7 @@ const CategoriasList = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const data = await StudentsService.getAll();
+            const data = await CategoriasService.getAll();
             setCategorias(data.data);
         }
 
@@ -40,7 +40,7 @@ const CategoriasList = () => {
 
                     <tbody>
                         {categorias.map((categoria, index) => (
-                            <tr key={student.id}>
+                            <tr key={categoria.id}>
                                 <td >{index + 1}</td>
                                 <td>{categoria.descricao}</td>
                                 <td>

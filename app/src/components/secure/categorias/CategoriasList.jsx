@@ -22,7 +22,7 @@ const CategoriasList = () => {
                         Voltar
                     </Link>
 
-                    <Link to={"/student"} className="btn btn-success px-4 mx-2">
+                    <Link to={"/categoria"} className="btn btn-success px-4 mx-2">
                         Registar
                     </Link>
                 </div>
@@ -39,10 +39,10 @@ const CategoriasList = () => {
                     </thead>
 
                     <tbody>
-                        {students.map((student, index) => (
+                        {categorias.map((categoria, index) => (
                             <tr key={student.id}>
                                 <td >{index + 1}</td>
-                                <td>{student.descricao}</td>
+                                <td>{categoria.descricao}</td>
                                 <td>
                                     <div className="d-flex justify-content">
                                         <Link to={`/categoria/${categoria.number}`} className='btn btn-primary me-2'>Editar</Link>

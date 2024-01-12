@@ -119,7 +119,7 @@ const Categoria = () => {
                                 <h1 className="h3 mb-3 fw-normal">Registar</h1>
 
                                 <div className="form-group">
-                                    <label>Descrção</label>
+                                    <label>Descrição</label>
                                     <Input
                                         type="text"
                                         className="form-control"

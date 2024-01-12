@@ -27,9 +27,9 @@ const Dashboard = () => {
                             Agendas
                         </Link>
                         <Link to={'/categorias-list'} className="btn btn-info btn-lg px-4 mx-2">
-                            categorias
+                            Categorias
                         </Link>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </main>

@@ -20,8 +20,8 @@ import Footer from "./components/shared/Footer";
 import Header from "./components/shared/Header";
 import AgendasList from "./components/secure/agendas/agendasList";
 import Agenda from "./components/secure/agendas/Agenda";
-import AgendasList from "./components/secure/agendas/agendasList";
-import Agenda from "./components/secure/agendas/Agenda";
+import CategoriasList from "./components/secure/categorias/categoriasList";
+import Categoria from "./components/secure/categorias/Categoria";
 
 const App = () => {
 return (

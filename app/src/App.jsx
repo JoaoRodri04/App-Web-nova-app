@@ -12,12 +12,14 @@ import Login from "./components/public/Login";
 import Register from "./components/public/Register";
 
 //PRIVATE ROUTES
-import Dashboard from "./components/secure/Dashboard";
+import Dashboard from "./components/secure/dashboard";
 import StudentsList from "./components/secure/students/StudentsList";
 import Student from "./components/secure/students/Student";
 
 import Footer from "./components/shared/Footer";
 import Header from "./components/shared/Header";
+import AgendasList from "./components/secure/agendas/agendasList";
+import Agenda from "./components/secure/agendas/Agenda";
 
 const App = () => {
 return (
@@ -30,6 +32,9 @@ return (
             <Route path="/students-list" element={<StudentsList />} />
             <Route path="/student" element={<Student />} />
             <Route path="/student/:number" element={<Student />} />
+            <Route path="/agendas-list" element={<AgendasList />} />
+            <Route path="/agenda" element={<Agenda />} />
+            <Route path="/agenda/:id" element={<Agenda />} />
             <Route path='*'element={<Navigate to="/dashboard" />} />
         </Route>
 

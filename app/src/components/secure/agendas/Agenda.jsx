@@ -5,15 +5,14 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { Link } from "react-router-dom";
 
-import StudentsService from "../../../services/agendas.service";
+import AgendasService from "../../../services/agendas.service";
 
-const Student = () => {
+const Agenda = () => {
     const navigate = useNavigate();
 
 
     const params = useParams();
     const [id, setId] = useState(null);
-    const [number, setNumber] = useState("");
     const [dia, setDia] = useState("");
     const [mes, setMes] = useState("");
     const [ano, setAno] = useState("");
@@ -22,15 +21,14 @@ const Student = () => {
     const [message, setMessage] = useState("");
 
     useEffect(() => {
-        if (!params.number) {
+        if (!params.id) {
             return;
         }
 
         async function fetchData() {
-            const response = await StudentsService.getById(params.number);
+            const response = await StudentsService.getById(params.id);
 
             setId(response.data.id);
-            setNumber(response.data.number);
             setDia(response.data.dia);
             setMes(response.data.mes);
             setAno(response.data.ano);
@@ -53,13 +51,12 @@ const Student = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            StudentsService.createORupdate(id, number, dia, mes, ano, diasemana).then(
+            AgendasService.createORupdate(id, dia, mes, ano, diasemana).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
 
                     setId(response.data.id);
-                    setNumber(response.data.number);
                     setDia(response.data.dia);
                     setMes(response.data.mes);
                     setAno(response.data.ano);
@@ -83,7 +80,7 @@ const Student = () => {
     const handleDelete = (e) => {
         e.preventDefault();
 
-        AgendasService.deleteUser(number).then(
+        AgendasService.deleteUser(id).then(
             (response) => {
                 navigate('/agendas-list');
             },
@@ -135,9 +132,9 @@ const Student = () => {
                                     <Input
                                         type="text"
                                         className="form-control"
-                                        name="number"
-                                        value={number}
-                                        onChange= {(e) => setNumber(e.target.value)}
+                                        name="dia"
+                                        value={dia}
+                                        onChange= {(e) => setDia(e.target.value)}
                                         validations={[required]}
                                     />
                                 </div>
@@ -148,8 +145,8 @@ const Student = () => {
                                         type="text"
                                         className="form-control"
                                         name="nome"
-                                        value={nome}
-                                        onChange={(e) => setName(e.target.value)}
+                                        value={mes}
+                                        onChange={(e) => setMes(e.target.value)}
                                         validations={[required, validLength]}
                                     />
                                 </div>
@@ -161,7 +158,7 @@ const Student = () => {
                                         className="form-control"
                                         name="Ano"
                                         value={ano}
-                                        onChange={(e) => setCity(e.target.value)}
+                                        onChange={(e) => setAno(e.target.value)}
                                         validations={[required, validLength]}
                                     />
                                 </div>
@@ -173,7 +170,7 @@ const Student = () => {
                                         className="form-control"
                                         name="dia da semana"
                                         value={diasemana}
-                                        onChange={(e) => setBirthday(e.target.value)}
+                                        onChange={(e) => setDiaSemana(e.target.value)}
                                         validations={[required]}
                                     />
                                 </div>
@@ -219,4 +216,4 @@ const Student = () => {
     );
 }
 
-export default Student;
+export default Agenda;

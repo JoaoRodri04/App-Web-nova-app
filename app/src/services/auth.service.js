@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://aw-p-exemplo-1778.vercel.app/api/v2/auth/"; //URL DA VOSSA WEBI API!
+const API_URL = "http://localhost:4242/api/auth/"; //URL DA VOSSA WEBI API!
 
 const register = (name, email, password) => {
 return axios.post(API_URL + "signup", {

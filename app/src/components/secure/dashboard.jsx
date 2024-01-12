@@ -23,6 +23,9 @@ const Dashboard = () => {
                         <Link to={'/students-list'} className="btn btn-info btn-lg px-4 mx-2">
                             Alunos
                         </Link>
+                        <Link to={'/agendas-list'} className="btn btn-info btn-lg px-4 mx-2">
+                            Agendas
+                        </Link>
                     </div>
                 </div>
             </div>

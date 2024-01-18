@@ -22,6 +22,8 @@ import AgendasList from "./components/secure/agendas/agendasList";
 import Agenda from "./components/secure/agendas/Agenda";
 import CategoriasList from "./components/secure/categorias/categoriasList";
 import Categoria from "./components/secure/categorias/Categoria";
+import IngredientesList from "./components/secure/ingredientes/IngredientesList";
+import Ingrediente from "./components/secure/ingredientes/Ingrediente";
 
 const App = () => {
 return (
@@ -40,6 +42,9 @@ return (
             <Route path="/categorias-list" element={<CategoriasList />} />
             <Route path="/categoria" element={<Categoria />} />
             <Route path="/categoria/:id" element={<Categoria />} />
+            <Route path="/ingredientes-list" element={<IngredientesList />} />
+            <Route path="/ingrediente" element={<Ingrediente />} />
+            <Route path="/ingrediente/:id" element={<Ingrediente />} />
             <Route path='*'element={<Navigate to="/dashboard" />} />
         </Route>
 

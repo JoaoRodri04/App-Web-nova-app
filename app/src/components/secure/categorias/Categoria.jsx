@@ -125,7 +125,7 @@ const Categoria = () => {
                                         className="form-control"
                                         name="descricao"
                                         value={descricao}
-                                        onChange= {(e) => setId(e.target.value)}
+                                        onChange= {(e) => setDescricao(e.target.value)}
                                         validations={[required]}
                                     />
                                 </div>

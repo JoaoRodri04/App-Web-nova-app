@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:4242/api/categorias";
+const API_URL = "http://localhost:4242/api/ingredientes";
 
 axios.interceptors.request.use(
 config => {
@@ -20,28 +20,28 @@ const getById = (id) => {
 return axios.get(API_URL + id);
 };
 
-const createORupdate = (id, descricao) => {
+const createORupdate = (id, nome,quantidade) => {
 if(id == null){
-    return create(descricao);
+    return create(nome, quantidade);
 }
 else {
-    return update(id, descricao);
+    return update(id, nome, quantidade);
 }
 };
 
-const create = (descricao) => {
-return axios.post(API_URL + "create", { descricao });
+const create = (nome, quantidade) => {
+return axios.post(API_URL + "create", { nome, quantidade });
 };
 
-const update = (id, descricao) => {
-return axios.put(API_URL + "update", { id, descricao });
+const update = (id, quantidade) => {
+return axios.put(API_URL + "update", { id, nome, quantidade });
 };
 
 const deleteUser = (id) => {
 return axios.delete(API_URL + "delete/" + id);
 };
 
-const CategoriasService = {
+const IngredientesService = {
 getAll,
 getById,
 createORupdate,
@@ -50,4 +50,4 @@ update,
 deleteUser
 }
 
-export default CategoriasService;
+export default IngredientesService;

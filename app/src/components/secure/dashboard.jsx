@@ -29,6 +29,9 @@ const Dashboard = () => {
                         <Link to={'/categorias-list'} className="btn btn-info btn-lg px-4 mx-2">
                             Categorias
                         </Link>
+                        <Link to={'/ingredientes-list'} className="btn btn-info btn-lg px-4 mx-2">
+                            ingredientes
+                        </Link>
                     </div>  
                 </div>
             </div>

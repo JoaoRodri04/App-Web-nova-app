@@ -45,7 +45,7 @@ const CategoriasList = () => {
                                 <td>{categoria.descricao}</td>
                                 <td>
                                     <div className="d-flex justify-content">
-                                        <Link to={`/categoria/${categoria.number}`} className='btn btn-primary me-2'>Editar</Link>
+                                        <Link to={`/categoria/${categoria.id}`} className='btn btn-primary me-2'>Editar</Link>
                                     </div>
                                 </td>
                             </tr>

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import IngredientesService from "../../../services/ingredientes.service";
 
-const Categoria = () => {
+const Ingrediente = () => {
     const navigate = useNavigate();
 
 
@@ -47,14 +47,14 @@ const Categoria = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            IngredientesService.createORupdate(id, descricao).then(
+            IngredientesService.createORupdate(id, nome, descricao).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
 
                     setId(response.data.id);
+                    setNome(response.data.nome);
                     setNome(response.data.quantidade);
-                    setDescricao(response.data.descricao);
                 },
                 (error) => {
                     const resMessage =
@@ -74,9 +74,9 @@ const Categoria = () => {
     const handleDelete = (e) => {
         e.preventDefault();
 
-        CategoriasService.deleteUser(id).then(
+        IngredientesService.deleteUser(id).then(
             (response) => {
-                navigate('/categorias-list');
+                navigate('/ingredientes-list');
             },
             (error) => {
                 const resMessage =
@@ -122,13 +122,25 @@ const Categoria = () => {
                                 <h1 className="h3 mb-3 fw-normal">Registar</h1>
 
                                 <div className="form-group">
-                                    <label>Descrição</label>
+                                    <label>Nome</label>
                                     <Input
                                         type="text"
                                         className="form-control"
-                                        name="descricao"
-                                        value={descricao}
-                                        onChange= {(e) => setId(e.target.value)}
+                                        name="nome"
+                                        value={nome}
+                                        onChange= {(e) => setNome(e.target.value)}
+                                        validations={[required]}
+                                    />
+                                </div>
+
+                                <div className="form-group">
+                                    <label>Quantidade</label>
+                                    <Input
+                                        type="text"
+                                        className="form-control"
+                                        name="quantidade"
+                                        value={quantidade}
+                                        onChange= {(e) => setQuantidade(e.target.value)}
                                         validations={[required]}
                                     />
                                 </div>
@@ -142,7 +154,7 @@ const Categoria = () => {
                                         Eliminar
                                     </button>)}
 
-                                    <Link to={"/categorias-list"} className="btn btn-secondary mt-2 mx-2">
+                                    <Link to={"/ingredientes-list"} className="btn btn-secondary mt-2 mx-2">
                                         Voltar
                                     </Link>
                                 </div>
@@ -176,4 +188,4 @@ const Categoria = () => {
     );
 }
 
-export default Categoria;
+export default Ingrediente;

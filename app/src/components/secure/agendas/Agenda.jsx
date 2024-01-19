@@ -26,7 +26,7 @@ const Agenda = () => {
         }
 
         async function fetchData() {
-            const response = await StudentsService.getById(params.id);
+            const response = await AgendasService.getById(params.id);
 
             setId(response.data.id);
             setDia(response.data.dia);

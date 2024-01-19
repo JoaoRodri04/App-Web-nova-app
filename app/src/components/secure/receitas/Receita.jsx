@@ -6,6 +6,7 @@ import CheckButton from "react-validation/build/button";
 import { Link } from "react-router-dom";
 
 import ReceitasService from "../../../services/receitas.service";
+import CategoriasService from '../../../services/categorias.service';
 
 const Receita = () => {
     const navigate = useNavigate();
@@ -16,10 +17,24 @@ const Receita = () => {
     const [nome, setNome] = useState("");
     const [tempo, setTempo] = useState("");
     const [graus, setGraus] = useState("");
+    const [categoriaid, setcategoriaid] = useState("");
+
     const [successful, setSuccessful] = useState(null);
     const [message, setMessage] = useState("");
 
+    const [categorias, setCategorias] = useState([]);
+
     useEffect(() => {
+
+
+        async function fetchCategorias() {
+            const response = await CategoriasService.getAll();
+            setCategorias(response.data);
+            setcategoriaid(response.data[0].id);
+        }
+
+        fetchCategorias();
+
         if (!params.id) {
             return;
         }
@@ -31,6 +46,7 @@ const Receita = () => {
             setNome(response.data.nome);
             setTempo(response.data.tempo);
             setGraus(response.data.graus);
+
         }
 
         fetchData();
@@ -49,7 +65,7 @@ const Receita = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            ReceitasService.createORupdate(id, nome, tempo, graus).then(
+            ReceitasService.createORupdate(id, nome, tempo, graus, categoriaid).then(
                 (response) => {
                     setMessage(response.data.message);
                     setSuccessful(true);
@@ -58,6 +74,7 @@ const Receita = () => {
                     setNome(response.data.nome);
                     setTempo(response.data.tempo);
                     setGraus(response.data.graus);
+
                 },
                 (error) => {
                     const resMessage =
@@ -131,7 +148,7 @@ const Receita = () => {
                                         className="form-control"
                                         name="nome"
                                         value={nome}
-                                        onChange= {(e) => setNome(e.target.value)}
+                                        onChange={(e) => setNome(e.target.value)}
                                         validations={[required]}
                                     />
                                 </div>
@@ -158,6 +175,19 @@ const Receita = () => {
                                         onChange={(e) => setGraus(e.target.value)}
                                         validations={[required, validLength]}
                                     />
+                                </div>
+
+                                <div className="form-group">
+                                    <label>Categoria</label>
+
+                                    <select name='categoriaid' id='categoriaid' onChange={(e) => setcategoriaid(e.target.value)}
+                                    >
+                                        {categorias.map((categoria, index) => (
+                                            <option value={categoria.id}>{categoria.descricao}</option>
+                                        ))}
+                                    </select>
+
+
                                 </div>
 
                                 <div className="form-group">

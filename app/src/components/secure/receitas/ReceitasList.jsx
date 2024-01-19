@@ -36,6 +36,7 @@ const ReceitasList = () => {
                             <th scope="col">Nome</th>
                             <th scope="col">Tempo</th>
                             <th scope="col">Graus</th>
+                            <th scope="col">Categoria</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -47,6 +48,8 @@ const ReceitasList = () => {
                                 <td>{receita.nome}</td>
                                 <td>{receita.tempo}</td>
                                 <td>{receita.graus}</td>
+                                <td>{receita.categoria?.descricao}</td>
+
 
                                 <td>
                                     <div className="d-flex justify-content">

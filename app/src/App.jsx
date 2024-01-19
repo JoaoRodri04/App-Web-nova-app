@@ -22,6 +22,8 @@ import CategoriasList from "./components/secure/categorias/categoriasList";
 import Categoria from "./components/secure/categorias/Categoria";
 import IngredientesList from "./components/secure/ingredientes/IngredientesList";
 import Ingrediente from "./components/secure/ingredientes/Ingrediente";
+import ReceitasList from "./components/secure/receitas/ReceitasList";
+import Receita from "./components/secure/receitas/Receita";
 
 const App = () => {
 return (
@@ -40,6 +42,9 @@ return (
             <Route path="/ingredientes-list" element={<IngredientesList />} />
             <Route path="/ingrediente" element={<Ingrediente />} />
             <Route path="/ingrediente/:id" element={<Ingrediente />} />
+            <Route path="/receitas-list" element={<ReceitasList />} />
+            <Route path="/receita" element={<Receita />} />
+            <Route path="/receita/:id" element={<Receita />} />
             <Route path='*'element={<Navigate to="/dashboard" />} />
         </Route>
 

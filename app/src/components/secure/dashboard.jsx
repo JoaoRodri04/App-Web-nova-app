@@ -26,7 +26,10 @@ const Dashboard = () => {
                             Categorias
                         </Link>
                         <Link to={'/ingredientes-list'} className="btn btn-info btn-lg px-4 mx-2">
-                            ingredientes
+                            Ingredientes
+                        </Link>
+                        <Link to={'/receitas-list'} className="btn btn-info btn-lg px-4 mx-2">
+                            Receitas
                         </Link>
                     </div>  
                 </div>

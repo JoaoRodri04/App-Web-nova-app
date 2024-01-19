@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:4242/api/categorias";
+const API_URL = "http://localhost:4242/api/categorias/";
 
 axios.interceptors.request.use(
 config => {
